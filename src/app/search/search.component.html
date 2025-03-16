@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center justify-center min-h-screen space-y-6 p-8 max-w-md mx-auto">
+    <!-- Logo & Title -->
+    <div class="flex items-center space-x-2">
+        <h2 class="text-4xl font-bold text-gray-900">Booklink</h2>
+        <img class="w-10 h-10" src="favicon.ico" alt="Booklink Logo">
+    </div>
+  
+    <!-- Search Input -->
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      placeholder="Search for a book..." 
+      class="w-full rounded-lg border border-gray-300 px-4 py-2 text-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+    >
+    
+    <!-- Buttons -->
+    <div class="flex space-x-4">
+      <button 
+        (click)="addBook()" 
+        class="bg-[#61d49e] text-white px-4 py-2 rounded-lg text-lg shadow-md hover:bg-[#4fb888] transition">
+        Add book
+      </button>
+      
+      <button 
+        routerLink="/real-estates"
+        class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-lg shadow-md hover:bg-indigo-500 transition">
+        Show database
+      </button>
+    </div>
+  </div>
+  

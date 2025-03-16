@@ -1,0 +1,44 @@
+<nav class="bg-white shadow">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <a routerLink="/home" routerLinkActive="active" class="flex items-center" style="font-size: 1.5rem; font-weight: 700; margin: 0; color: black; transition: color 0.2s ease;">
+          <h2 class="mr-1">Booklink</h2>
+          <img class="h-8 w-auto" src="favicon.ico" alt="Your Company">
+        </a>
+        
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <button routerLink="/home" class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-200" aria-current="page">Home</button>
+            <button routerLink="/real-estates" *ngIf="isLoggedIn()" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-black">Database</button>
+            <button routerLink="/search" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-black">Search</button>
+            <button routerLink="" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 hover:text-black">About</button>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button routerLink="/login" *ngIf="!isLoggedIn()" routerLinkActive="active" class="mr-4 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 transition">Login</button>
+        <button routerLink="/register" *ngIf="!isLoggedIn()" routerLinkActive="active" class="mr-4 px-4 py-2 text-sm font-medium text-white bg-[#61d49e] rounded-md hover:bg-[#50b884] transition">Register</button>
+
+        <!-- Profile dropdown -->
+        <div class="relative ml-3">
+          <div>
+            <button *ngIf="isLoggedIn()" type="button" class="relative flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-sm focus:ring-2 focus:ring-gray-300 focus:outline-none" id="user-menu-button">
+              <img class="size-8 rounded-full" src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Anonymous User">
+              <span class="ml-2 font-medium text-gray-900">{{ userEmail || 'Anonymous User' }}</span>
+              <button (click)="logout()" class="btn">Logout</button>
+            </button>
+          </div>
+          
+      
+          <!-- Dropdown menu (hidden by default) -->
+          <div id="user-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 ring-1 shadow-lg ring-black/5 focus:outline-none hidden">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">View Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

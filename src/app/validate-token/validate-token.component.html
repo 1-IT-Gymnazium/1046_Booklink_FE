@@ -1,0 +1,7 @@
+<div class="flex h-screen items-center justify-center">
+    <div class="p-6 max-w-md text-center bg-white shadow-md rounded-md">
+      <h2 class="text-2xl font-semibold" [ngClass]="{'text-green-600': isSuccess, 'text-red-600': !isSuccess}">
+        {{ message }}
+      </h2>
+    </div>
+  </div>  
