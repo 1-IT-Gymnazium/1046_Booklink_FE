@@ -1,0 +1,797 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>booklink-fe documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">booklink-fe documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  RegisterComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/register/register.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-register</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>RouterLink</code>
+                            <code>RouterLinkActive</code>
+                            <code>HttpClientModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./register.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./register.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#apiUrl" >apiUrl</a>
+                            </li>
+                            <li>
+                                <a href="#confirmPassword" >confirmPassword</a>
+                            </li>
+                            <li>
+                                <a href="#email" >email</a>
+                            </li>
+                            <li>
+                                <a href="#password" >password</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#navigateTo" >navigateTo</a>
+                            </li>
+                            <li>
+                                <a href="#register" >register</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, http: HttpClient)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/register/register.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateTo"></a>
+                    <span class="name">
+                        <span ><b>navigateTo</b></span>
+                        <a href="#navigateTo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateTo(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/app/register/register.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>path</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="register"></a>
+                    <span class="name">
+                        <span ><b>register</b></span>
+                        <a href="#register"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>register()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/register/register.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiUrl"></a>
+                    <span class="name">
+                        <span ><b>apiUrl</b></span>
+                        <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;http://localhost:5267/v1/api/auth/register&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/register/register.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmPassword"></a>
+                    <span class="name">
+                        <span ><b>confirmPassword</b></span>
+                        <a href="#confirmPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/register/register.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="email"></a>
+                    <span class="name">
+                        <span ><b>email</b></span>
+                        <a href="#email"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/register/register.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="password"></a>
+                    <span class="name">
+                        <span ><b>password</b></span>
+                        <a href="#password"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/register/register.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { HttpClient, HttpClientModule } from &#x27;@angular/common/http&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { Router, RouterLink, RouterLinkActive } from &#x27;@angular/router&#x27;;
+
+@Component({
+  selector: &#x27;app-register&#x27;,
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive, HttpClientModule],
+  templateUrl: &#x27;./register.component.html&#x27;,
+  styleUrl: &#x27;./register.component.css&#x27;
+})
+export class RegisterComponent {
+  email: string &#x3D; &#x27;&#x27;;
+  password: string &#x3D; &#x27;&#x27;;
+  confirmPassword: string &#x3D; &#x27;&#x27;;
+  apiUrl: string &#x3D; &#x27;http://localhost:5267/v1/api/auth/register&#x27;;
+
+  constructor(private router: Router, private http: HttpClient) {}
+  
+    navigateTo(path: string): void {
+      if (this.router.url !&#x3D;&#x3D; path) {
+        this.router.navigate([path]);
+      }
+    }
+    register() {
+      if (this.password !&#x3D;&#x3D; this.confirmPassword) {
+        alert(&#x27;Passwords do not match!&#x27;);
+        return;
+      }
+  
+      const userData &#x3D; { email: this.email, password: this.password };
+  
+      this.http.post(this.apiUrl, userData).subscribe(
+        (response) &#x3D;&gt; {
+          console.log(&#x27;Registration successful&#x27;, response);
+          alert(&#x27;Registration successful!&#x27;);
+          this.router.navigate([&#x27;/login&#x27;]); // Redirect to login page
+        },
+        (error) &#x3D;&gt; {
+          console.error(&#x27;Registration failed&#x27;, error);
+          alert(&#x27;Registration failed! Try again.&#x27;);
+        }
+      );
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- Page container for vertical centering and responsive padding --&gt;
+&lt;div class&#x3D;&quot;flex min-h-full flex-col justify-center px-6 py-12 lg:px-8&quot;&gt;
+
+  &lt;!-- Logo and Heading --&gt;
+  &lt;div class&#x3D;&quot;sm:mx-auto sm:w-full sm:max-w-sm&quot;&gt;
+    &lt;div class&#x3D;&quot;flex items-center justify-center space-x-3&quot;&gt;
+      &lt;span class&#x3D;&quot;text-3xl font-bold text-gray-900&quot;&gt;Booklink&lt;/span&gt;
+      &lt;img class&#x3D;&quot;h-10 w-auto&quot; src&#x3D;&quot;favicon.ico&quot; alt&#x3D;&quot;Booklink Logo&quot;&gt;
+    &lt;/div&gt;
+    &lt;!-- Page Title --&gt;
+    &lt;h2 class&#x3D;&quot;mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900&quot;&gt;Create new account&lt;/h2&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Registration Form Container --&gt;
+  &lt;div class&#x3D;&quot;mt-10 sm:mx-auto sm:w-full sm:max-w-sm&quot;&gt;
+    &lt;form class&#x3D;&quot;space-y-6&quot; action&#x3D;&quot;#&quot; method&#x3D;&quot;POST&quot;&gt;
+      
+      &lt;!-- Email Field --&gt;
+      &lt;div&gt;
+        &lt;label for&#x3D;&quot;email&quot; class&#x3D;&quot;block text-sm/6 font-medium text-gray-900&quot;&gt;Email address&lt;/label&gt;
+        &lt;div class&#x3D;&quot;mt-2&quot;&gt;
+          &lt;input type&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; [(ngModel)]&#x3D;&quot;email&quot; autocomplete&#x3D;&quot;email&quot; required
+            class&#x3D;&quot;block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 
+                   outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
+                   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Password Field --&gt;
+      &lt;div&gt;
+        &lt;div class&#x3D;&quot;flex items-center justify-between&quot;&gt;
+          &lt;label for&#x3D;&quot;password&quot; class&#x3D;&quot;block text-sm/6 font-medium text-gray-900&quot;&gt;Password&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;mt-2&quot;&gt;
+          &lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; [(ngModel)]&#x3D;&quot;password&quot; required 
+            class&#x3D;&quot;block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 
+                   outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
+                   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Confirm Password Field --&gt;
+        &lt;div class&#x3D;&quot;flex items-center justify-between&quot;&gt;
+          &lt;label for&#x3D;&quot;confirmPassword&quot; class&#x3D;&quot;block text-sm/6 font-medium text-gray-900&quot;&gt;Confirm password&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;mt-2&quot;&gt;
+          &lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;confirmPassword&quot; id&#x3D;&quot;confirmPassword&quot; [(ngModel)]&#x3D;&quot;confirmPassword&quot; required 
+            class&#x3D;&quot;block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 
+                   outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 
+                   focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Submit Button --&gt;
+      &lt;div&gt;
+        &lt;button (click)&#x3D;&quot;register()&quot; type&#x3D;&quot;submit&quot;
+          class&#x3D;&quot;flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold 
+                 text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 
+                 focus-visible:outline-offset-2 focus-visible:outline-indigo-600&quot;&gt;
+          Sign up
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+
+    &lt;!-- Redirect to Login --&gt;
+    &lt;p class&#x3D;&quot;mt-10 text-center text-sm/6 text-gray-500&quot;&gt;
+      Already have an account?
+      &lt;a routerLink&#x3D;&quot;/login&quot; routerLinkActive&#x3D;&quot;active&quot; 
+         class&#x3D;&quot;font-semibold text-indigo-600 hover:text-indigo-500&quot;&gt;
+        Sign in here!
+      &lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- Page container for vertical centering and responsive padding --><div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">  <!-- Logo and Heading -->  <div class="sm:mx-auto sm:w-full sm:max-w-sm">    <div class="flex items-center justify-center space-x-3">      <span class="text-3xl font-bold text-gray-900">Booklink</span>      <img class="h-10 w-auto" src="favicon.ico" alt="Booklink Logo">    </div>    <!-- Page Title -->    <h2 class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Create new account</h2>  </div>  <!-- Registration Form Container -->  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">    <form class="space-y-6" action="#" method="POST">            <!-- Email Field -->      <div>        <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>        <div class="mt-2">          <input type="email" name="email" id="email" [(ngModel)]="email" autocomplete="email" required            class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900                    outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400                    focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">        </div>      </div>      <!-- Password Field -->      <div>        <div class="flex items-center justify-between">          <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>        </div>        <div class="mt-2">          <input type="password" name="password" id="password" [(ngModel)]="password" required             class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900                    outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400                    focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">        </div>        <!-- Confirm Password Field -->        <div class="flex items-center justify-between">          <label for="confirmPassword" class="block text-sm/6 font-medium text-gray-900">Confirm password</label>        </div>        <div class="mt-2">          <input type="password" name="confirmPassword" id="confirmPassword" [(ngModel)]="confirmPassword" required             class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900                    outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400                    focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">        </div>      </div>      <!-- Submit Button -->      <div>        <button (click)="register()" type="submit"          class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold                  text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2                  focus-visible:outline-offset-2 focus-visible:outline-indigo-600">          Sign up        </button>      </div>    </form>    <!-- Redirect to Login -->    <p class="mt-10 text-center text-sm/6 text-gray-500">      Already have an account?      <a routerLink="/login" routerLinkActive="active"          class="font-semibold text-indigo-600 hover:text-indigo-500">        Sign in here!      </a>    </p>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'storybook-button'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DatabaseComponent', 'selector': 'app-real-estate'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'HeaderComponent', 'selector': 'storybook-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavBarComponent', 'selector': 'nav-bar'},{'name': 'PageComponent', 'selector': 'storybook-page'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'},{'name': 'ValidateTokenComponent', 'selector': 'app-validate-token'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RegisterComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

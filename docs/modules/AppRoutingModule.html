@@ -7,9 +7,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	   <link rel="stylesheet" href="./styles/style.css">
-        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
           <script>
@@ -64,7 +64,7 @@
 
         <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
                <div class="d-flex">
-                    <a href="./" class="navbar-brand">booklink-fe documentation</a>
+                    <a href="../" class="navbar-brand">booklink-fe documentation</a>
                     <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
                </div>
         </div>
@@ -79,34 +79,95 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content modules">
+               <div class="content module">
                    <div class="content-data">
 
 
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Modules</li>
+    <li class="breadcrumb-item" >AppRoutingModule</li>
 </ol>
-<div class="container-fluid modules">
-    <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <div class="card card-module">
-                    <div class="card-header">
-                        <h4 class="card-title">AppRoutingModule</h4>
-                    </div>
-                    <div class="card-block">
-                                <p class="no-graph">
-                                    No graph available.
-                                </p>
-                        <footer class="text-center">
-                            <a href="./modules/AppRoutingModule.html" class="btn btn-default">Browse</a>
-                        </footer>
-                    </div>
-                </div>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a href="#info" 
+            class="nav-link"
+            class="nav-link active"
+            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li class="nav-item">
+        <a href="#source" 
+            class="nav-link"
+            
+            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/app.routes.ts</code>
+        </p>
+
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
             </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Router, RouterModule, Routes } from &#x27;@angular/router&#x27;;
+import { HomeComponent } from &#x27;./home/home.component&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { LoginComponent } from &#x27;./login/login.component&#x27;;
+import { RegisterComponent } from &#x27;./register/register.component&#x27;;
+import { ValidateTokenComponent } from &#x27;./validate-token/validate-token.component&#x27;;
+import { AuthGuard } from &#x27;./services/auth.guard&#x27;;
+import { DatabaseComponent } from &#x27;./database/database.component&#x27;;
+import { DashboardComponent } from &#x27;./dashboard/dashboard.component&#x27;;
+import { AuthService } from &#x27;./services/auth.service&#x27;;
+import { UserProfileComponent } from &#x27;./user-profile/user-profile.component&#x27;;
+import { ForgotPasswordComponent } from &#x27;./forgot-password/forgot-password.component&#x27;;
+import { ResetPasswordComponent } from &#x27;./reset-password/reset-password.component&#x27;;
+
+
+export const routes: Routes &#x3D; [
+    { path: &#x27;home&#x27;, component: HomeComponent },
+    { path: &#x27;login&#x27;, component: LoginComponent },
+    { path: &#x27;register&#x27;, component: RegisterComponent},
+    { path: &#x27;auth/validate-token&#x27;, component: ValidateTokenComponent },
+    { path: &#x27;collections&#x27;, component: DatabaseComponent, canActivate: [AuthGuard]},
+    { path: &#x27;dashboard&#x27;, component: DashboardComponent, canActivate: [AuthGuard]},
+    { path: &#x27;profile&#x27;, component: UserProfileComponent, canActivate: [AuthGuard]},
+    { path: &#x27;forgot-password&#x27;, component: ForgotPasswordComponent},
+    { path: &#x27;reset-password&#x27;, component: ResetPasswordComponent },
+    ];
+
+    @NgModule({
+        imports: [RouterModule.forRoot(routes)],
+        exports: [RouterModule]
+    })
+    export class AppRoutingModule {
+        constructor(private authService: AuthService, private router: Router) {
+          let defaultRoute &#x3D; this.authService.isLoggedIn() ? &#x27;/dashboard&#x27; : &#x27;/home&#x27;;
+          this.router.navigateByUrl(defaultRoute);
+        }
+      }</code></pre>
     </div>
 </div>
-
 
 
 
@@ -148,9 +209,9 @@
           </label>
 
        <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'modules';
-            var COMPODOC_CURRENT_PAGE_URL = 'modules.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppRoutingModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
@@ -167,30 +228,30 @@
                }
           </script>
 
-       <script src="./js/libs/custom-elements.min.js"></script>
-       <script src="./js/libs/lit-html.js"></script>
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
 
-       <script src="./js/menu-wc.js" defer></script>
-       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
-       <script src="./js/libs/bootstrap-native.js"></script>
+       <script src="../js/libs/bootstrap-native.js"></script>
 
-       <script src="./js/libs/es6-shim.min.js"></script>
-       <script src="./js/libs/EventDispatcher.js"></script>
-       <script src="./js/libs/promise.min.js"></script>
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
 
-       <script src="./js/compodoc.js"></script>
+       <script src="../js/compodoc.js"></script>
 
-       <script src="./js/tabs.js"></script>
-       <script src="./js/menu.js"></script>
-       <script src="./js/libs/clipboard.min.js"></script>
-       <script src="./js/libs/prism.js"></script>
-       <script src="./js/sourceCode.js"></script>
-          <script src="./js/search/search.js"></script>
-          <script src="./js/search/lunr.min.js"></script>
-          <script src="./js/search/search-lunr.js"></script>
-          <script src="./js/search/search_index.js"></script>
-       <script src="./js/lazy-load-graphs.js"></script>
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
 
 
     </body>
