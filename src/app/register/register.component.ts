@@ -15,7 +15,7 @@ export class RegisterComponent {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  apiUrl: string = 'http://localhost:5267/api/v1/auth/register';
+  apiUrl: string = 'http://localhost:5267/v1/api/auth/register';
 
   constructor(private router: Router, private http: HttpClient) {}
   

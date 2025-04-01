@@ -1,16 +1,58 @@
-<div class="bg-white h-screen flex items-center justify-center">
-    <div class="relative isolate px-6 lg:px-8 w-full">
-      <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-        <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-      </div>
-      <div class="mx-auto max-w-2xl text-center">
-        <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">Organize Your Household Library Today, With Booklink</h1>
-        <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">Booklink lets you organize your personal collection and connect with friends and family to swap, borrow, and lend titles—no more searching through piles or lost books!</p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-          <a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs bg-[#61d49e] rounded-md hover:bg-[#50b884] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-          <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span aria-hidden="true">→</span></a>
+<div class="bg-white min-h-screen flex flex-col items-center justify-center">
+    <div class="relative isolate px-4 md:px-8 w-full">
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
         </div>
-      </div>
+
+        <div class="mx-auto max-w-2xl text-center">
+            <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
+                Organize Your Household Library Today, With Booklink
+            </h1>
+            <p class="mt-8 text-lg font-medium text-gray-500 sm:text-xl/8">
+                Booklink lets you manage your personal book collection — no more searching through piles or losing
+                books!
+            </p>
+
+            <!--Redirects you to Dashboard if logged in, or to login page if not-->
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+                <button (click)="navigateToStart()"
+                    class="rounded-md px-4 py-2.5 text-sm font-semibold text-white bg-[#61d49e] hover:bg-[#50b884] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-600">
+                    Get started
+                </button>
+
+                <button (click)="learnMore = !learnMore"
+                    class="text-sm font-semibold text-gray-900 hover:underline transition">
+                    {{ learnMore ? 'Hide' : 'Learn more' }} <span aria-hidden="true">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!--Hidden under "Learn more" button-->
+        <div *ngIf="learnMore" class="mt-16 w-full space-y-16 transition-all duration-300 px-4 md:px-8">
+            <div>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <p class="text-gray-700 text-base">Booklink is a personal book management system built to help you
+                        track, categorize, and visualize books within your home. Each book can be placed visually into a
+                        bookshelf grid.</p>
+                    <img src="ilustration_image_1.png" alt="What is Booklink" class="w-80 h-80 object-contain">
+                </div>
+            </div>
+
+            <div>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <img src="ilustration_image_2.png" class="w-80 h-80 object-contain" alt="Designed for homes">
+                    <p class="text-gray-700 text-base">Organize books by household → room → bookshelf → exact position.
+                        It’s like having a visual catalog of your entire collection.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <p class="text-gray-700 text-base">Built with modern web tech (Angular, .NET), Booklink ensures a
+                        smooth and secure experience.</p>
+                    <img src="ilustration_image_3.png" alt="Safe and secure" class="w-80 h-80 object-contain">    
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  
+</div>

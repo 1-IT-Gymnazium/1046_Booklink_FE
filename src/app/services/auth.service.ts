@@ -5,43 +5,73 @@ import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
+// Interfaces for password reset requests
+export interface ForgotPasswordRequest {
+  email: string;
+}
+
+export interface ResetPasswordRequest {
+  email: string;
+  token: string;
+  newPassword: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5267/api/v1/auth';
+  // base auth url
+  private apiUrl = 'http://localhost:5267/v1/api/auth';
+
   private jwtHelper = new JwtHelperService();
 
-  private userEmailSubject = new BehaviorSubject<string | null>(localStorage.getItem('userEmail')); // Holds the logged-in user's email
-  userEmail$ = this.userEmailSubject.asObservable(); // Observable for components
+  private userEmailSubject = new BehaviorSubject<string | null>(
+    localStorage.getItem('userEmail')
+  );
+  userEmail$ = this.userEmailSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  // Send password reset request to backend
+  requestPasswordReset(request: ForgotPasswordRequest): Observable<any> {
+    return this.http.post(`${this.apiUrl}/forgot-password`, request);
+  }
+
+  // backend call
+  resetPassword(data: ResetPasswordRequest) {
+    return this.http.post(`${this.apiUrl}/reset-password`, data);
+  }
 
   login(email: string, password: string): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap(response => {
-        console.log('Received token:', response.token); // Debug log
-        localStorage.setItem('authToken', response.token); // Save token on success
+        // Store JWT in localStorage
+        console.log('Received token:', response.token);
+        localStorage.setItem('authToken', response.token);
+
+        // Store user email for later use
         console.log('Saved userEmail:', email);
-        localStorage.setItem('userEmail', email)
+        localStorage.setItem('userEmail', email);
+
         this.userEmailSubject.next(email);
       }),
+      // Handle error responses from backend
       catchError(error => {
-        console.error('Error from backend:', error); // Logs any errors
-        return throwError(error); // Rethrow the error for handling
+        console.error('Error from backend:', error);
+        return throwError(error);
       })
     );
   }
 
   getUserId(): string | null {
     const token = localStorage.getItem('authToken');
-    if (!token)
-      return null;
+    if (!token) return null;
 
     const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken?.sub || null; // Ensure your backend includes userId in the token payload
+    return decodedToken?.sub || null;
   }
-  
+
+  // Clear auth data and redirect to home page
   logout(): void {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userEmail');

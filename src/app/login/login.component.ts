@@ -23,8 +23,8 @@ export class LoginComponent {
       this.authService.login(this.email, this.password).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
-          console.log('Redirecting to /search...');
-          this.router.navigateByUrl('/search'); // Redirect to search page
+          console.log('Redirecting to /dashboard...');
+          this.router.navigateByUrl('/dashboard'); // Redirect to search page
         },
         error: (err) => {
           console.error('Login failed:', err);

@@ -13,25 +13,36 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavBarComponent {
   userEmail: string | null = null;
+  showUserMenu: boolean = false;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.userEmail$.subscribe(email => {
-      this.userEmail = email; // Update UI dynamically
+      this.userEmail = email;
     });
   }
 
   isLoggedIn(): boolean {
-    return this.authService.isLoggedIn(); // Check if user is logged in
+    return this.authService.isLoggedIn();
   }
 
   logout(): void {
     this.authService.logout();
+    this.showUserMenu = false;
   }
 
   navigateTo(path: string): void {
     if (this.router.url !== path) {
       this.router.navigate([path]);
     }
+  }
+
+  toggleUserMenu(): void {
+    this.showUserMenu = !this.showUserMenu;
+  }
+  
+  closeUserMenu(): void {
+    this.showUserMenu = false;
   }
 }
